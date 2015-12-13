@@ -1,0 +1,6 @@
+<launch>
+  <!--include file="$(find xm_2d_nav)/move_base_config/amcl_node.xml"/-->
+  <include file="$(find xm_2d_nav)/move_base_config/move_base.xml"/>
+      <!--remap from="velocity_smoother/smooth_cmd_vel" to="cmd_vel"/-->
+  <!--remap from="mobile_base_controller/cmd_vel" to="cmd_vel" /-->
+</launch>

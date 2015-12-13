@@ -1,0 +1,44 @@
+<launch>
+<!--
+  Example move_base configuration. Descriptions of parameters, as well as a full list of all amcl parameters, can be found at http://www.ros.org/wiki/move_base.
+-->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <!--remap from="scan" to="scan_leg_filtered" /-->
+    <param name="footprint_padding" value="0.02" />
+    <param name="controller_frequency" value="10.0" />
+    <param name="controller_patience" value="3.0" />
+
+    <param name="oscillation_timeout" value="30.0" />
+    <param name="oscillation_distance" value="0.5" />
+
+
+<!-- follow params-->
+
+    <param name="global_costmap/global_frame" value="/odom" />
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <param name="base_global_planner" value="carrot_planner/CarrotPlanner"/>
+    <rosparam file="$(find xm_2d_nav)/move_base_config/follow_costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find xm_2d_nav)/move_base_config/follow_costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find xm_2d_nav)/move_base_config/follow_local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find xm_2d_nav)/move_base_config/follow_global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find xm_2d_nav)/move_base_config/follow_base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find xm_2d_nav)/move_base_config/follow_dwa_local_planner_params.yaml" command="load" />
+<!--whoiswho-->
+ <!--   <param name="global_costmap/global_frame" value="/map" /-->
+    <!--param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" /-->
+  <!--  <param name="base_global_planner" value="navfn/NavfnROS" />
+    <rosparam file="$(find xm_2d_nav)/move_base_config/whoiswho_costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find xm_2d_nav)/move_base_config/whoiswho_costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find xm_2d_nav)/move_base_config/whoiswho_local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find xm_2d_nav)/move_base_config/whoiswho_global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find xm_2d_nav)/move_base_config/whoiswho_base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find xm_2d_nav)/move_base_config/whoiswho_dwa_local_planner_params.yaml" command="load" />-->
+    <!--recovery behaviors/-->
+    <rosparam file="$(find xm_2d_nav)/move_base_config/recovery_params.yaml" command="load" />
+    
+
+    <remap from="cmd_vel" to="mobile_base_controller/cmd_vel" />
+    <remap from="odom" to="mobile_base_controller/odom" />
+    <!--remap from="scan" to="scan_filtered" /-->
+  </node>
+</launch>
