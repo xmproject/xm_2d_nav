@@ -3,9 +3,9 @@
 #http://www.ros.org/wiki/base_local_planner
 TrajectoryPlannerROS:
   #Set the acceleration limits of the robot
-  acc_lim_th: 0.8 
-  acc_lim_x: 0.7
-  acc_lim_y: 0.7
+  acc_lim_th: 1.2 
+  acc_lim_x: 1.0
+  acc_lim_y: 1.0
 
   #Set the velocity limits of the robot
   max_vel_x: 0.2
@@ -33,7 +33,7 @@ TrajectoryPlannerROS:
   vtheta_samples: 20
 
   #Parameters for scoring trajectories
-  #meter_scores: true
+  meter_scoring: true
   goal_distance_bias: 0.8
   path_distance_bias: 0.6
   occdist_scale: 0.01
