@@ -1,4 +1,4 @@
-# xm_2dnav
+# xm_2d_nav
 
 Create Date: 2015.6.17
 
